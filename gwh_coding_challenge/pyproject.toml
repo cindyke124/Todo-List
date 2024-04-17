@@ -1,0 +1,21 @@
+[tool.pytest.ini_options]
+testpaths = [
+    "apps/Todo"
+]
+python_files = [
+    "test.py",
+    "test_*.py",
+    "*_test.py",
+]
+python_classes = [
+    "Test*",
+    "*Test"
+]
+python_functions = [
+    "test_*",
+    "*_test"
+]
+plugins = [
+    "django",
+]
+DJANGO_SETTINGS_MODULE = "gwh_coding_challenge.settings"
