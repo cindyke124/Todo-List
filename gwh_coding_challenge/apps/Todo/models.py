@@ -4,7 +4,7 @@ from django.db import connection
 # Create your models here.
 STATUS_CHOICES = [
     ("done", "Done"),
-    ("in progress", "In Progress"),
+    ("in_progress", "In Progress"),
     ("new", "New"),
 ]
 

@@ -4,9 +4,12 @@ from rest_framework import status
 from .models import Todo
 import pytest
 from django.urls import reverse
+
+
 @pytest.mark.django_db
 class TestTodoAPI:
     client = APIClient()
+
     def test_create_todo(self):
         url = reverse('todos')
         todo = {
@@ -24,8 +27,10 @@ class TestTodoAPI:
 
     def test_get_all_todos(self):
         url = reverse('todos')
-        Todo.objects.create(title='First test Todo', description='First test descriptiont', due_date='2024-05-01', status='new')
-        Todo.objects.create(title='Second test Todo', description='Second test descriptiont', due_date='2024-04-16', status='in progress')
+        Todo.objects.create(title='First test Todo', description='First test description', due_date='2024-05-01',
+                            status='new')
+        Todo.objects.create(title='Second test Todo', description='Second test description', due_date='2024-04-16',
+                            status='in_progress')
         response = self.client.get(url)
         assert response.status_code == status.HTTP_200_OK
         assert len(response.data) == 2
