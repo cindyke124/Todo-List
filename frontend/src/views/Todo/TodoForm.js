@@ -5,8 +5,9 @@ import {createTodo, fetchTodos} from '../../redux/action/todoThunks';
 
 function TodoForm() {
     const dispatch = useDispatch();
-    const todos = useSelector(state => state.todos.todos);
-
+    const todos = useSelector(function (state) {
+        return state.todos.todos;
+    });
     const [title, setTitle] = useState('');
     const [description, setDescription] = useState('');
     const [dueDate, setDueDate] = useState('');
@@ -17,6 +18,7 @@ function TodoForm() {
         done: 'Done',
     };
 
+    //execute when render
     useEffect(function () {
         dispatch(fetchTodos());
     }, [dispatch]);
@@ -29,7 +31,13 @@ function TodoForm() {
             due_date: dueDate,
             status
         };
-        dispatch(createTodo(formData));
+        dispatch(createTodo(formData))
+            .then(function () {
+                setTitle('');
+                setDescription('');
+                setDueDate('');
+                setStatus('');
+            });
     }
 
     function handleTitleChange(event) {
@@ -127,7 +135,6 @@ function TodoForm() {
                     }
                     return (
                         <tr key={todo.id} className={className}>
-
                             <td>{todo.title}</td>
                             <td>{todo.description}</td>
                             <td>{todo.due_date}</td>
