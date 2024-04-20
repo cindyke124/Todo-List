@@ -8,6 +8,8 @@ function TodoForm() {
     const todos = useSelector(function (state) {
         return state.todos.todos;
     });
+
+    // state hooks for form fields
     const [title, setTitle] = useState('');
     const [description, setDescription] = useState('');
     const [dueDate, setDueDate] = useState('');
@@ -18,11 +20,12 @@ function TodoForm() {
         done: 'Done',
     };
 
-    //execute when render
+    // fetch todos when render
     useEffect(function () {
         dispatch(fetchTodos());
     }, [dispatch]);
 
+    // handle form submission
     function handleSubmit(event) {
         event.preventDefault();
         const formData = {
@@ -40,6 +43,7 @@ function TodoForm() {
             });
     }
 
+    // event handlers for form fields
     function handleTitleChange(event) {
         setTitle(event.target.value);
     }
@@ -106,6 +110,7 @@ function TodoForm() {
                         <option value="done">Done</option>
                     </Input>
                 </FormGroup>
+                {/*user must select a status*/}
                 <Button type="submit" disabled={!status}>Submit</Button>
             </Form>
             <Table>
