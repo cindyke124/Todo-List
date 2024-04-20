@@ -1,35 +1,71 @@
-import React, {useState, useEffect} from 'react';
-import {useDispatch, useSelector} from 'react-redux';
+import React, {useEffect, useState} from "react";
 import {Button, Form, FormGroup, Label, Input, Table} from 'reactstrap';
-import {createTodo, fetchTodos} from '../../redux/action/todoThunks';
+
 
 function TodoForm() {
-    const dispatch = useDispatch();
-    const todos = useSelector(state => state.todos.todos);
-
     const [title, setTitle] = useState('');
     const [description, setDescription] = useState('');
     const [dueDate, setDueDate] = useState('');
     const [status, setStatus] = useState('');
+    const [todos, setTodos] = useState([]);
     const STATUS_LABELS = {
         new: 'New',
         in_progress: 'In Progress',
         done: 'Done',
     };
-
     useEffect(function () {
-        dispatch(fetchTodos());
-    }, [dispatch]);
+        fetchTodos();
+    }, []);
+
+    function fetchTodos() {
+        fetch('http://127.0.0.1:8000/todos/', {method: "GET"})
+            .then(function (response) {
+                return response.json();
+            })
+            .then(function (data) {
+                setTodos(data);
+            })
+            .catch(function (error) {
+                console.error('Error:', error);
+            });
+    }
+
 
     function handleSubmit(event) {
         event.preventDefault();
+
         const formData = {
-            title,
-            description,
+            title: title,
+            description: description,
             due_date: dueDate,
-            status
+            status: status
         };
-        dispatch(createTodo(formData));
+
+        fetch('http://127.0.0.1:8000/todos/', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify(formData)
+            }
+        )
+            .then(function (response) {
+                if (!response) {
+                    throw new Error('Response is undefined');
+                }
+                if (!response.ok) {
+                    throw new Error('Network response was not ok');
+                }
+                return response.json();
+            })
+            .then(function (data) {
+                console.log('Todo added', data);
+                setTodos([data, ...todos]);
+                setTitle('');
+                setDescription('');
+                setDueDate('');
+                setStatus('');
+            })
     }
 
     function handleTitleChange(event) {
@@ -136,6 +172,7 @@ function TodoForm() {
                     );
                 })}
                 </tbody>
+
             </Table>
         </>
     );
