@@ -8,7 +8,6 @@ STATUS_CHOICES = [
     ("new", "New"),
 ]
 
-
 class Todo(models.Model):
     title = models.TextField()
     description = models.TextField()

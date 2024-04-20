@@ -6,10 +6,12 @@ from rest_framework import status
 
 class TodoListCreate(APIView):
     def get(self, request):
+        # to get all records
         todos = Todo.objects.all().order_by('-id')
         serializer = TodoSerializer(todos, many=True)
         return Response(serializer.data)
     def post(self, request):
+        # receive and save a new record
         serializer = TodoSerializer(data=request.data)
         if serializer.is_valid():
             serializer.save()

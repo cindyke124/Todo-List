@@ -5,4 +5,4 @@ class TodoSerializer(serializers.ModelSerializer):
     class Meta:
         model = Todo
         fields = ['id', 'title', 'description', 'due_date', 'status']
-        extra_kwargs = {'status': {'default': 'new'}}
+

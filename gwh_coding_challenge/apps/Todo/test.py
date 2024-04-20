@@ -16,7 +16,7 @@ class TestTodoAPI:
             'title': 'test title',
             'description': ' test description',
             'due_date': '2024-01-01',
-            'status': 'new'
+            'status': 'done'
         }
         original_count = Todo.objects.count()
         response = self.client.post(url, todo)
@@ -33,4 +33,5 @@ class TestTodoAPI:
                             status='in_progress')
         response = self.client.get(url)
         assert response.status_code == status.HTTP_200_OK
+        # test whether the db added 2 new records
         assert len(response.data) == 2
