@@ -6,7 +6,7 @@ import {createTodo, fetchTodos} from '../../redux/action/todoThunks';
 function TodoForm() {
     const dispatch = useDispatch();
     const todos = useSelector(function (state) {
-        return state.todos.todos;
+        return state.todos.todo_list;
     });
 
     // state hooks for form fields
