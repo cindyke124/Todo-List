@@ -39,9 +39,11 @@ acces frontend: http://localhost:3000/
 https://geode-bead-565.notion.site/Todo-API-Document-e0f1505de4284b69a6afee52cf7ccbbe?pvs=4
 
 ## Usage
-+ The user must enter all spaces of the form, including title, description, deadline and status before submitting.
++ The user must enter all spaces of the form, including title, description, deadline, and status before submitting.
 + After the form is submitted, the most recently created to-do list will be displayed at the top of the form immediately.
 + The color of the columns relates to the status of the to-do item.
+<img width="735" alt="Screenshot 2024-04-20 at 10 45 17 PM" src="https://github.com/cindyke124/gwh_coding_challenge/assets/152237584/42c0e4b2-3e8c-4d2c-9324-07f3f42fe42f">
+
 
 ## Technology Stack
 Django REST Framework
