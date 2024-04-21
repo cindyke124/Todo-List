@@ -50,14 +50,14 @@ https://geode-bead-565.notion.site/Todo-API-Document-e0f1505de4284b69a6afee52cf7
 
 
 ## Technology Stack
-Django REST Framework
-React.js
-Redux
-SQLite
-Python
-JavaScript
-HTML
-CSS
+Django REST Framework  
+React.js  
+Redux  
+SQLite  
+Python  
+JavaScript  
+HTML  
+CSS  
 
 ## Project Structure
 ```
