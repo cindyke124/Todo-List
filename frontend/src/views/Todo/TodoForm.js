@@ -74,7 +74,7 @@ function TodoForm() {
                         onChange={handleTitleChange}
                     />
                 </FormGroup>
-                <br />
+                <br/>
                 <FormGroup>
                     <Label for="description">Description</Label>
                     <Input
@@ -86,7 +86,7 @@ function TodoForm() {
                         onChange={handleDescriptionChange}
                     />
                 </FormGroup>
-                <br />
+                <br/>
                 <FormGroup>
                     <Label for="dueDate">Due Date</Label>
                     <Input
@@ -97,7 +97,7 @@ function TodoForm() {
                         onChange={handleDueDateChange}
                     />
                 </FormGroup>
-                <br />
+                <br/>
                 <FormGroup>
                     <Label for="status">Status</Label>
                     <Input
@@ -113,11 +113,11 @@ function TodoForm() {
                         <option value="done">Done</option>
                     </Input>
                 </FormGroup>
-                <br />
+                <br/>
                 {/*user must select a status*/}
-                <Button type="submit" disabled={!status}>Submit</Button>
+                <Button type="submit" disabled={!status || !title || !description || !dueDate}>Submit</Button>
             </Form>
-            <br /><br />
+            <br/><br/>
             <Table>
                 <thead>
                 <tr className="table-info">
