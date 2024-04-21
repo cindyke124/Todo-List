@@ -1,6 +1,6 @@
 ## Overview
 
-"Todo List" is an event scheduler where users can add and view their events, including title, description, due date and status (new, in progress or completed).
+"Todo List" is an event scheduler where users can add and view their events, including title, description, due date, and status (new, in progress, or done).
 
 ## Dependencies
 
@@ -28,12 +28,16 @@ yup@0.32.11
 
 ## Lcoal Run
 ### Backend
+```
 python manage.py runserver
-access backend: http://127.0.0.1:8000/todos/
+```
+You can access backend at: http://127.0.0.1:8000/todos/
 
 ### Frontend:
+```
 npm start
-acces frontend: http://localhost:3000/
+```
+You can access frontend at: http://localhost:3000/
 
 ### API Document
 https://geode-bead-565.notion.site/Todo-API-Document-e0f1505de4284b69a6afee52cf7ccbbe?pvs=4
